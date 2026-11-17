@@ -1,0 +1,7 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_src_path: gh:valterschutz/maven-template
+artifact_id: note-editor
+group_id: org.group.oopp
+java_version: 21
+main_class: Main
+project_name: Group22
