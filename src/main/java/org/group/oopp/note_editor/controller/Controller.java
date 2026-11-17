@@ -1,50 +1,5 @@
 package org.group.oopp.note_editor.controller;
 
-import static com.raylib.Raylib.*;
-
-import org.group.oopp.note_editor.model.Model;
-import org.group.oopp.note_editor.model.Model.Velocity;
-
 public class Controller {
-  /** Speed while an arrow key is held, in pixels per second. */
-  private static final float SPEED = 200f;
 
-  private enum Key {
-    LEFT(KEY_LEFT, -1, 0),
-    RIGHT(KEY_RIGHT, 1, 0),
-    UP(KEY_UP, 0, -1),
-    DOWN(KEY_DOWN, 0, 1);
-
-    private final int raylibCode;
-    private final float xVel;
-    private final float yVel;
-
-    Key(int raylibCode, int xVel, int yVel) {
-      this.raylibCode = raylibCode;
-      this.xVel = xVel * SPEED;
-      this.yVel = yVel * SPEED;
-    }
-  }
-
-  private final Model model;
-
-  public Controller(Model model) {
-    this.model = model;
-  }
-
-  public void update() {
-    processInput();
-  }
-
-  private void processInput() {
-    float xVelocity = 0;
-    float yVelocity = 0;
-    for (Key key : Key.values()) {
-      if (IsKeyDown(key.raylibCode)) {
-        xVelocity += key.xVel;
-        yVelocity += key.yVel;
-      }
-    }
-    model.setVelocity(new Velocity(xVelocity, yVelocity));
-  }
 }
