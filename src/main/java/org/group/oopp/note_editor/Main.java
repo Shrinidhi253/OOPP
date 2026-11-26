@@ -1,34 +1,29 @@
 package org.group.oopp.note_editor;
+import java.io.IOException;
+import java.util.Objects;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
   public static void main(String[] args) {
-    System.out.println("Hello World");
     launch(args);
   }
 
   @Override
-  public void start(Stage stage) throws Exception {
-    // Create an Ellipse and set fill color
-    Ellipse ellipse = new Ellipse(110, 70);
-    ellipse.setFill(Color.LIGHTBLUE);
-    // Create a Text shape with font and size
-    Text text = new Text("My Shapes");
-    text.setFont(new Font("Arial Bold", 24));
-    StackPane stackPane = new StackPane();
-    stackPane.getChildren().addAll(ellipse, text);
-    Scene scene = new Scene(stackPane, 350, 230,
-            Color.LIGHTYELLOW);
-    stage.setTitle("MyShapes with JavaFX");
+  public void start(Stage stage) throws IOException {
+    Parent root = FXMLLoader.load(
+            Objects.requireNonNull(getClass().getResource("/org/group/oopp/note_editor/view/TextArea.fxml"))
+    );
+
+    Scene scene = new Scene(root);
+
+    stage.setTitle("Text Editor");
     stage.setScene(scene);
+    stage.setMaximized(true); //Opens the text window full screen. Also keeps the title bar and task bar.
     stage.show();
-  }
   }
 }
